@@ -1,6 +1,7 @@
 import traceback
 
 import src.gpt_lm as gpt_lm
+import src.phi_llm as phi_llm
 import src.stat_lm as stat_lm
 
 
@@ -26,6 +27,8 @@ class ModelWrapper:
                 self.model, self.generate_kwargs = stat_lm.construct_model()
             elif model_name == "GPT":
                 self.model, self.generate_kwargs = gpt_lm.construct_model()
+            elif model_name == "Phi":
+                self.model, self.generate_kwargs = phi_llm.construct_model()
             else:
                 return False, f"Модель {model_name} еще не поддерживается"
         except Exception as e:
